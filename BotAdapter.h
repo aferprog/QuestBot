@@ -11,22 +11,23 @@ using ChatType  = int64_t;
 
 class BotAdapter
 {
-	Bot* bot;
+	Bot* bot = nullptr;
 public:
 	BotAdapter() = default;
 	BotAdapter(string token){
 		bot = new Bot(token);
 	}
+	~BotAdapter() {
+		if (!bot)
+			delete bot;
+	}
 
 	int getRandomNumber(int min, int max) {
-		// Создайте генератор случайных чисел
 		std::random_device rd;
-		std::mt19937 gen(rd()); // Используйте Mersenne Twister engine (MT19937)
+		std::mt19937 gen(rd());
 
-		// Создайте распределение
 		std::uniform_int_distribution<int> distribution(min, max);
 
-		// Генерируйте случайное число и верните его
 		return distribution(gen);
 	}
 

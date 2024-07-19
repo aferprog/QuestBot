@@ -18,7 +18,7 @@ int main() {
 
     json doc = json::parse(Different::ReadFileToString("Quest.json"));
 
-    string token = "";
+    string token = "token";
     printf("Token: %s\n", token.c_str());
 
     bot.init(token);
